@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qlink_interface.interface &mdash; qlink-interface 0.0.1 documentation</title>
+  <title>qlink_interface.interface &mdash; qlink-interface 0.0.2 documentation</title>
   
 
   
@@ -163,20 +163,26 @@
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
 
 
-<span class="c1"># Supported request types (create and keep, measure directly, and remote state preparation)</span>
-<div class="viewcode-block" id="RequestType"><a class="viewcode-back" href="../../modules/interface.html#qlink_interface.interface.RequestType">[docs]</a><span class="k">class</span> <span class="nc">RequestType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<div class="viewcode-block" id="EPRType"><a class="viewcode-back" href="../../modules/interface.html#qlink_interface.interface.EPRType">[docs]</a><span class="k">class</span> <span class="nc">EPRType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
     <span class="n">K</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">M</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
-    <span class="n">R</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
+
+
+<span class="c1"># Supported request types (create and keep, measure directly, and remote state preparation)</span>
+<div class="viewcode-block" id="RequestType"><a class="viewcode-back" href="../../modules/interface.html#qlink_interface.interface.RequestType">[docs]</a><span class="k">class</span> <span class="nc">RequestType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="n">EPRType</span><span class="o">.</span><span class="n">K</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">EPRType</span><span class="o">.</span><span class="n">M</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">EPRType</span><span class="o">.</span><span class="n">R</span><span class="o">.</span><span class="n">value</span>
     <span class="n">RECV</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
     <span class="n">STOP_RECV</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
 
 
 <span class="c1"># Types of replies from the link layer protocol</span>
 <div class="viewcode-block" id="ReturnType"><a class="viewcode-back" href="../../modules/interface.html#qlink_interface.interface.ReturnType">[docs]</a><span class="k">class</span> <span class="nc">ReturnType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-    <span class="n">OK_K</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">OK_M</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
-    <span class="n">OK_R</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">OK_K</span> <span class="o">=</span> <span class="n">EPRType</span><span class="o">.</span><span class="n">K</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">OK_M</span> <span class="o">=</span> <span class="n">EPRType</span><span class="o">.</span><span class="n">M</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">OK_R</span> <span class="o">=</span> <span class="n">EPRType</span><span class="o">.</span><span class="n">R</span><span class="o">.</span><span class="n">value</span>
     <span class="n">ERR</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
     <span class="n">CREATE_ID</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
 
@@ -309,6 +315,14 @@
     <span class="s2">&quot;origin_node_id&quot;</span><span class="p">,</span>
 <span class="p">])</span>
 <span class="n">LinkLayerErr</span><span class="o">.</span><span class="fm">__new__</span><span class="o">.</span><span class="vm">__defaults__</span> <span class="o">=</span> <span class="p">(</span><span class="n">ReturnType</span><span class="o">.</span><span class="n">ERR</span><span class="p">,)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">0</span><span class="p">,)</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">LinkLayerErr</span><span class="o">.</span><span class="n">_fields</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="get_creator_node_id"><a class="viewcode-back" href="../../modules/interface.html#qlink_interface.interface.get_creator_node_id">[docs]</a><span class="k">def</span> <span class="nf">get_creator_node_id</span><span class="p">(</span><span class="n">local_node_id</span><span class="p">,</span> <span class="n">create_request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the node ID of the node that submitted the given create request&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">create_request</span><span class="o">.</span><span class="n">directionality_flag</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">create_request</span><span class="o">.</span><span class="n">remote_node_id</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">local_node_id</span></div>
 </pre></div>
 
            </div>

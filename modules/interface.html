@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>interface &mdash; qlink-interface 0.0.1 documentation</title>
+  <title>interface &mdash; qlink-interface 0.0.2 documentation</title>
   
 
   
@@ -166,6 +166,27 @@ For details about this interface and specific header fields see the paper:</p>
 <li><p>The Link Layer service in a Quantum Internet
 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-dahlberg-ll-quantum">https://datatracker.ietf.org/doc/draft-dahlberg-ll-quantum</a></p></li>
 </ul>
+<dl class="class">
+<dt id="qlink_interface.interface.EPRType">
+<em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">EPRType</code><a class="reference internal" href="../_modules/qlink_interface/interface.html#EPRType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qlink_interface.interface.EPRType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="qlink_interface.interface.EPRType.K">
+<code class="sig-name descname">K</code><em class="property"> = 0</em><a class="headerlink" href="#qlink_interface.interface.EPRType.K" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.EPRType.M">
+<code class="sig-name descname">M</code><em class="property"> = 1</em><a class="headerlink" href="#qlink_interface.interface.EPRType.M" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.EPRType.R">
+<code class="sig-name descname">R</code><em class="property"> = 2</em><a class="headerlink" href="#qlink_interface.interface.EPRType.R" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="class">
 <dt id="qlink_interface.interface.RequestType">
 <em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">RequestType</code><a class="reference internal" href="../_modules/qlink_interface/interface.html#RequestType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qlink_interface.interface.RequestType" title="Permalink to this definition">¶</a></dt>
@@ -730,6 +751,12 @@ For details about this interface and specific header fields see the paper:</p>
 <dd><p>Alias for field number 3</p>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="function">
+<dt id="qlink_interface.interface.get_creator_node_id">
+<code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">get_creator_node_id</code><span class="sig-paren">(</span><em class="sig-param">local_node_id</em>, <em class="sig-param">create_request</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qlink_interface/interface.html#get_creator_node_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qlink_interface.interface.get_creator_node_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the node ID of the node that submitted the given create request</p>
 </dd></dl>
 
 </div>
