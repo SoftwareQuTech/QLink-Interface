@@ -1,56 +1,47 @@
 language: python
 branches:
   only:
-    - master
-    - develop
+  - master
+  - develop
 matrix:
   include:
-    # - name: Python 3.5 on Linux
-    #   python: 3.5
-    - name: Python 3.6 on Linux
-      python: 3.6
-      env:
-      - BUILD=True
-    # - name: Python 3.7 on Xenial Linux
-    #   python: 3.7
-    #   dist: xenial
-    # - name: Python 3.7 on macOS
-    #   os: osx
-    #   osx_image: xcode10.2
-    #   language: shell
-    #   env:
-    #   - PIPFLAG="--user"
+  - name: Python 3.6 on Linux
+    python: 3.6
+    env:
+    - BUILD=True
 before_install:
-  - make build
+- make build
 install:
-  - pip3 install dist/*.whl $PIPFLAG
-  - make test-deps
+- pip3 install dist/*.whl $PIPFLAG
+- make test-deps
 script:
-  - make lint
-  - make tests
+- make lint
+  # - make tests
 before_deploy:
-  - cd docs
-  - make build
-  - cd ..
+- cd docs
+- make build
+- cd ..
 deploy:
-  - provider: pypi
-    user: __token__
-    password:
-      secure: SECURE_KEY
-    distributions: sdist bdist_wheel
-    skip_existing: true
-    on: 
-      branch: master
-      condition: "$BUILD = True"
-  - provider: pages
-    skip_cleanup: true
-    github_token: "$GITHUB_TOKEN"
-    keep_history: true
-    committer_from_gh: true
-    local_dir: docs/build/html
-    on:
-      branch: master
-      condition: "$BUILD = True"
+- provider: pypi
+  user: __token__
+  password:
+    secure: SECURE_KEY
+  distributions: sdist bdist_wheel
+  skip_existing: true
+  on:
+    branch: master
+    condition: "$BUILD = True"
+- provider: pages
+  skip_cleanup: true
+  github_token: "$GITHUB_TOKEN"
+  keep_history: true
+  committer_from_gh: true
+  local_dir: docs/build/html
+  on:
+    branch: master
+    condition: "$BUILD = True"
 env:
   global:
     secure: SECURE_KEY
+dd:
+  secure: jchwboFVIRjgPmA8X0GSE5sRsgJXQUnvQuP5u0KKavb8lyCgniaLrU+j4ltMn052YUlNSZ61oz6iUVRwsMpUW9df6gzuxKIAZIHAAi15mg9qeZTD8U5nSuZiOHRBm01j4yVHm3DGjQUDtvQ0pmsrXCJ88j7LTEjZ6JZNulA04NQ1vL39B0bvDnssXkrDAHZVlzNBJxBDWDYkF5Eq69ZZJ6S0U3XF1S4TbjdfqzQ9C/zT0g+BSUCsYlG/rrpxwMpkijGKcTjDYuw8qe2DxlyssygG6kKbVO2Qm5WbumRnF7/5F4y7xyPld/MR5cFwvDOvdm6hjERmkvgk5OACaoONdTX49n2R3u0FroQWZBwD5EiEyTsxWzCTMUo0PUbbNX5UYvJEuYosFdQvhQYevgDLOilNoTaFaV68vny4Av4i81d+CVMnG1oIj7UbmLnW/JFk9kZAJ6lMBw9S+NKY0Aa8Ap883neZ3Y+rhgDgI7ZMh8vRMRJjVnln/ZUqxEgLZTAieGt4DC+CXW/Px7FImZtuVK+n2qoIT7MsV/Bz3CjsvZ8DOaaHVKRU6Loqq0TgSdCb+ggxba/PXI8qN0F55cijJu5qSldvbqqWUp/y0s+k6EF+0kb4xED8T0YgFtxtCawsDMZ1Oj+S6CIuncDpbRW0U4L7XMMJ0vZ71iPZpZOYy6I=
