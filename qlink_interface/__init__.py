@@ -1,6 +1,7 @@
 __version__ = "0.0.1"
 
 from .interface import (
+    EPRType,
     RequestType,
     ReturnType,
     ErrorCode,
@@ -13,4 +14,5 @@ from .interface import (
     LinkLayerOKTypeM,
     LinkLayerOKTypeR,
     LinkLayerErr,
+    get_creator_node_id,
 )

@@ -15,20 +15,26 @@ from enum import Enum, auto
 from collections import namedtuple
 
 
-# Supported request types (create and keep, measure directly, and remote state preparation)
-class RequestType(Enum):
+class EPRType(Enum):
     K = 0
     M = auto()
     R = auto()
+
+
+# Supported request types (create and keep, measure directly, and remote state preparation)
+class RequestType(Enum):
+    K = EPRType.K.value
+    M = EPRType.M.value
+    R = EPRType.R.value
     RECV = auto()
     STOP_RECV = auto()
 
 
 # Types of replies from the link layer protocol
 class ReturnType(Enum):
-    OK_K = 0
-    OK_M = auto()
-    OK_R = auto()
+    OK_K = EPRType.K.value
+    OK_M = EPRType.M.value
+    OK_R = EPRType.R.value
     ERR = auto()
     CREATE_ID = auto()
 
@@ -161,3 +167,11 @@ LinkLayerErr = namedtuple("LinkLayerErr", [
     "origin_node_id",
 ])
 LinkLayerErr.__new__.__defaults__ = (ReturnType.ERR,) + (0,) * (len(LinkLayerErr._fields) - 1)
+
+
+def get_creator_node_id(local_node_id, create_request):
+    """Returns the node ID of the node that submitted the given create request"""
+    if create_request.directionality_flag == 1:
+        return create_request.remote_node_id
+    else:
+        return local_node_id
