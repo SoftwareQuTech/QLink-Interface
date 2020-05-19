@@ -1,0 +1,784 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>interface &mdash; qlink-interface 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="API" href="../api.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> qlink-interface
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">interface</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">qlink-interface</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">API</a> &raquo;</li>
+        
+      <li>interface</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/modules/interface.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-qlink_interface.interface">
+<span id="interface"></span><h1>interface<a class="headerlink" href="#module-qlink_interface.interface" title="Permalink to this headline">¶</a></h1>
+<p>This defines the service interface of the link layer and provides a magic link layer protocol.
+For details about this interface and specific header fields see the paper:</p>
+<ul class="simple">
+<li><p>A Link Layer Protocol for Quantum Networks
+<a class="reference external" href="https://arxiv.org/abs/1903.09778">https://arxiv.org/abs/1903.09778</a></p></li>
+</ul>
+<p>and the QIRG draft:</p>
+<ul class="simple">
+<li><p>The Link Layer service in a Quantum Internet
+<a class="reference external" href="https://datatracker.ietf.org/doc/draft-dahlberg-ll-quantum">https://datatracker.ietf.org/doc/draft-dahlberg-ll-quantum</a></p></li>
+</ul>
+<dl class="class">
+<dt id="qlink_interface.interface.RequestType">
+<em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">RequestType</code><a class="reference internal" href="../_modules/qlink_interface/interface.html#RequestType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qlink_interface.interface.RequestType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="qlink_interface.interface.RequestType.K">
+<code class="sig-name descname">K</code><em class="property"> = 0</em><a class="headerlink" href="#qlink_interface.interface.RequestType.K" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.RequestType.M">
+<code class="sig-name descname">M</code><em class="property"> = 1</em><a class="headerlink" href="#qlink_interface.interface.RequestType.M" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.RequestType.R">
+<code class="sig-name descname">R</code><em class="property"> = 2</em><a class="headerlink" href="#qlink_interface.interface.RequestType.R" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.RequestType.RECV">
+<code class="sig-name descname">RECV</code><em class="property"> = 3</em><a class="headerlink" href="#qlink_interface.interface.RequestType.RECV" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.RequestType.STOP_RECV">
+<code class="sig-name descname">STOP_RECV</code><em class="property"> = 4</em><a class="headerlink" href="#qlink_interface.interface.RequestType.STOP_RECV" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qlink_interface.interface.ReturnType">
+<em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">ReturnType</code><a class="reference internal" href="../_modules/qlink_interface/interface.html#ReturnType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qlink_interface.interface.ReturnType" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="qlink_interface.interface.ReturnType.OK_K">
+<code class="sig-name descname">OK_K</code><em class="property"> = 0</em><a class="headerlink" href="#qlink_interface.interface.ReturnType.OK_K" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.ReturnType.OK_M">
+<code class="sig-name descname">OK_M</code><em class="property"> = 1</em><a class="headerlink" href="#qlink_interface.interface.ReturnType.OK_M" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.ReturnType.OK_R">
+<code class="sig-name descname">OK_R</code><em class="property"> = 2</em><a class="headerlink" href="#qlink_interface.interface.ReturnType.OK_R" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.ReturnType.ERR">
+<code class="sig-name descname">ERR</code><em class="property"> = 3</em><a class="headerlink" href="#qlink_interface.interface.ReturnType.ERR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.ReturnType.CREATE_ID">
+<code class="sig-name descname">CREATE_ID</code><em class="property"> = 4</em><a class="headerlink" href="#qlink_interface.interface.ReturnType.CREATE_ID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qlink_interface.interface.ErrorCode">
+<em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">ErrorCode</code><a class="reference internal" href="../_modules/qlink_interface/interface.html#ErrorCode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qlink_interface.interface.ErrorCode" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="qlink_interface.interface.ErrorCode.UNSUPP">
+<code class="sig-name descname">UNSUPP</code><em class="property"> = 0</em><a class="headerlink" href="#qlink_interface.interface.ErrorCode.UNSUPP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.ErrorCode.NOTIME">
+<code class="sig-name descname">NOTIME</code><em class="property"> = 1</em><a class="headerlink" href="#qlink_interface.interface.ErrorCode.NOTIME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.ErrorCode.NORES">
+<code class="sig-name descname">NORES</code><em class="property"> = 2</em><a class="headerlink" href="#qlink_interface.interface.ErrorCode.NORES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.ErrorCode.TIMEOUT">
+<code class="sig-name descname">TIMEOUT</code><em class="property"> = 3</em><a class="headerlink" href="#qlink_interface.interface.ErrorCode.TIMEOUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.ErrorCode.REJECTED">
+<code class="sig-name descname">REJECTED</code><em class="property"> = 4</em><a class="headerlink" href="#qlink_interface.interface.ErrorCode.REJECTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.ErrorCode.OTHER">
+<code class="sig-name descname">OTHER</code><em class="property"> = 5</em><a class="headerlink" href="#qlink_interface.interface.ErrorCode.OTHER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.ErrorCode.EXPIRE">
+<code class="sig-name descname">EXPIRE</code><em class="property"> = 6</em><a class="headerlink" href="#qlink_interface.interface.ErrorCode.EXPIRE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.ErrorCode.CREATE">
+<code class="sig-name descname">CREATE</code><em class="property"> = 7</em><a class="headerlink" href="#qlink_interface.interface.ErrorCode.CREATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qlink_interface.interface.RandomBasis">
+<em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">RandomBasis</code><a class="reference internal" href="../_modules/qlink_interface/interface.html#RandomBasis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qlink_interface.interface.RandomBasis" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="qlink_interface.interface.RandomBasis.NONE">
+<code class="sig-name descname">NONE</code><em class="property"> = 0</em><a class="headerlink" href="#qlink_interface.interface.RandomBasis.NONE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.RandomBasis.XZ">
+<code class="sig-name descname">XZ</code><em class="property"> = 1</em><a class="headerlink" href="#qlink_interface.interface.RandomBasis.XZ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.RandomBasis.XYZ">
+<code class="sig-name descname">XYZ</code><em class="property"> = 2</em><a class="headerlink" href="#qlink_interface.interface.RandomBasis.XYZ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.RandomBasis.CHSH">
+<code class="sig-name descname">CHSH</code><em class="property"> = 3</em><a class="headerlink" href="#qlink_interface.interface.RandomBasis.CHSH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qlink_interface.interface.Basis">
+<em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">Basis</code><a class="reference internal" href="../_modules/qlink_interface/interface.html#Basis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qlink_interface.interface.Basis" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="qlink_interface.interface.Basis.Z">
+<code class="sig-name descname">Z</code><em class="property"> = 0</em><a class="headerlink" href="#qlink_interface.interface.Basis.Z" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.Basis.X">
+<code class="sig-name descname">X</code><em class="property"> = 1</em><a class="headerlink" href="#qlink_interface.interface.Basis.X" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.Basis.Y">
+<code class="sig-name descname">Y</code><em class="property"> = 2</em><a class="headerlink" href="#qlink_interface.interface.Basis.Y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.Basis.ZPLUSX">
+<code class="sig-name descname">ZPLUSX</code><em class="property"> = 3</em><a class="headerlink" href="#qlink_interface.interface.Basis.ZPLUSX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.Basis.ZMINUSX">
+<code class="sig-name descname">ZMINUSX</code><em class="property"> = 4</em><a class="headerlink" href="#qlink_interface.interface.Basis.ZMINUSX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qlink_interface.interface.LinkLayerCreate">
+<em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">LinkLayerCreate</code><span class="sig-paren">(</span><em class="sig-param">remote_node_id</em>, <em class="sig-param">purpose_id</em>, <em class="sig-param">type</em>, <em class="sig-param">number</em>, <em class="sig-param">random_basis_local</em>, <em class="sig-param">random_basis_remote</em>, <em class="sig-param">minimum_fidelity</em>, <em class="sig-param">time_unit</em>, <em class="sig-param">max_time</em>, <em class="sig-param">priority</em>, <em class="sig-param">atomic</em>, <em class="sig-param">consecutive</em>, <em class="sig-param">probability_dist_local1</em>, <em class="sig-param">probability_dist_local2</em>, <em class="sig-param">probability_dist_remote1</em>, <em class="sig-param">probability_dist_remote2</em>, <em class="sig-param">rotation_X_local1</em>, <em class="sig-param">rotation_Y_local</em>, <em class="sig-param">rotation_X_local2</em>, <em class="sig-param">rotation_X_remote1</em>, <em class="sig-param">rotation_Y_remote</em>, <em class="sig-param">rotation_X_remote2</em><span class="sig-paren">)</span><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.atomic">
+<em class="property">property </em><code class="sig-name descname">atomic</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.atomic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 10</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.consecutive">
+<em class="property">property </em><code class="sig-name descname">consecutive</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.consecutive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 11</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.max_time">
+<em class="property">property </em><code class="sig-name descname">max_time</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.max_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 8</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.minimum_fidelity">
+<em class="property">property </em><code class="sig-name descname">minimum_fidelity</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.minimum_fidelity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 6</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.number">
+<em class="property">property </em><code class="sig-name descname">number</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.priority">
+<em class="property">property </em><code class="sig-name descname">priority</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.priority" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 9</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.probability_dist_local1">
+<em class="property">property </em><code class="sig-name descname">probability_dist_local1</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.probability_dist_local1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 12</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.probability_dist_local2">
+<em class="property">property </em><code class="sig-name descname">probability_dist_local2</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.probability_dist_local2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 13</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.probability_dist_remote1">
+<em class="property">property </em><code class="sig-name descname">probability_dist_remote1</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.probability_dist_remote1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 14</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.probability_dist_remote2">
+<em class="property">property </em><code class="sig-name descname">probability_dist_remote2</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.probability_dist_remote2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 15</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.purpose_id">
+<em class="property">property </em><code class="sig-name descname">purpose_id</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.purpose_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.random_basis_local">
+<em class="property">property </em><code class="sig-name descname">random_basis_local</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.random_basis_local" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 4</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.random_basis_remote">
+<em class="property">property </em><code class="sig-name descname">random_basis_remote</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.random_basis_remote" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 5</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.remote_node_id">
+<em class="property">property </em><code class="sig-name descname">remote_node_id</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.remote_node_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.rotation_X_local1">
+<em class="property">property </em><code class="sig-name descname">rotation_X_local1</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.rotation_X_local1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 16</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.rotation_X_local2">
+<em class="property">property </em><code class="sig-name descname">rotation_X_local2</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.rotation_X_local2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 18</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.rotation_X_remote1">
+<em class="property">property </em><code class="sig-name descname">rotation_X_remote1</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.rotation_X_remote1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 19</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.rotation_X_remote2">
+<em class="property">property </em><code class="sig-name descname">rotation_X_remote2</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.rotation_X_remote2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 21</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.rotation_Y_local">
+<em class="property">property </em><code class="sig-name descname">rotation_Y_local</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.rotation_Y_local" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 17</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.rotation_Y_remote">
+<em class="property">property </em><code class="sig-name descname">rotation_Y_remote</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.rotation_Y_remote" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 20</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.time_unit">
+<em class="property">property </em><code class="sig-name descname">time_unit</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.time_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 7</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerCreate.type">
+<em class="property">property </em><code class="sig-name descname">type</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qlink_interface.interface.LinkLayerRecv">
+<em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">LinkLayerRecv</code><span class="sig-paren">(</span><em class="sig-param">type</em>, <em class="sig-param">remote_node_id</em>, <em class="sig-param">purpose_id</em><span class="sig-paren">)</span><a class="headerlink" href="#qlink_interface.interface.LinkLayerRecv" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="qlink_interface.interface.LinkLayerRecv.purpose_id">
+<em class="property">property </em><code class="sig-name descname">purpose_id</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerRecv.purpose_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerRecv.remote_node_id">
+<em class="property">property </em><code class="sig-name descname">remote_node_id</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerRecv.remote_node_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerRecv.type">
+<em class="property">property </em><code class="sig-name descname">type</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerRecv.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qlink_interface.interface.LinkLayerStopRecv">
+<em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">LinkLayerStopRecv</code><span class="sig-paren">(</span><em class="sig-param">type</em>, <em class="sig-param">remote_node_id</em>, <em class="sig-param">purpose_id</em><span class="sig-paren">)</span><a class="headerlink" href="#qlink_interface.interface.LinkLayerStopRecv" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="qlink_interface.interface.LinkLayerStopRecv.purpose_id">
+<em class="property">property </em><code class="sig-name descname">purpose_id</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerStopRecv.purpose_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerStopRecv.remote_node_id">
+<em class="property">property </em><code class="sig-name descname">remote_node_id</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerStopRecv.remote_node_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerStopRecv.type">
+<em class="property">property </em><code class="sig-name descname">type</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerStopRecv.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qlink_interface.interface.LinkLayerOKTypeK">
+<em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">LinkLayerOKTypeK</code><span class="sig-paren">(</span><em class="sig-param">type</em>, <em class="sig-param">create_id</em>, <em class="sig-param">logical_qubit_id</em>, <em class="sig-param">directionality_flag</em>, <em class="sig-param">sequence_number</em>, <em class="sig-param">purpose_id</em>, <em class="sig-param">remote_node_id</em>, <em class="sig-param">goodness</em>, <em class="sig-param">goodness_time</em><span class="sig-paren">)</span><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeK" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeK.create_id">
+<em class="property">property </em><code class="sig-name descname">create_id</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeK.create_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeK.directionality_flag">
+<em class="property">property </em><code class="sig-name descname">directionality_flag</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeK.directionality_flag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeK.goodness">
+<em class="property">property </em><code class="sig-name descname">goodness</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeK.goodness" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 7</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeK.goodness_time">
+<em class="property">property </em><code class="sig-name descname">goodness_time</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeK.goodness_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 8</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeK.logical_qubit_id">
+<em class="property">property </em><code class="sig-name descname">logical_qubit_id</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeK.logical_qubit_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeK.purpose_id">
+<em class="property">property </em><code class="sig-name descname">purpose_id</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeK.purpose_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 5</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeK.remote_node_id">
+<em class="property">property </em><code class="sig-name descname">remote_node_id</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeK.remote_node_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 6</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeK.sequence_number">
+<em class="property">property </em><code class="sig-name descname">sequence_number</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeK.sequence_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 4</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeK.type">
+<em class="property">property </em><code class="sig-name descname">type</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeK.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qlink_interface.interface.LinkLayerOKTypeM">
+<em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">LinkLayerOKTypeM</code><span class="sig-paren">(</span><em class="sig-param">type</em>, <em class="sig-param">create_id</em>, <em class="sig-param">measurement_outcome</em>, <em class="sig-param">measurement_basis</em>, <em class="sig-param">directionality_flag</em>, <em class="sig-param">sequence_number</em>, <em class="sig-param">purpose_id</em>, <em class="sig-param">remote_node_id</em>, <em class="sig-param">goodness</em><span class="sig-paren">)</span><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeM" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeM.create_id">
+<em class="property">property </em><code class="sig-name descname">create_id</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeM.create_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeM.directionality_flag">
+<em class="property">property </em><code class="sig-name descname">directionality_flag</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeM.directionality_flag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 4</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeM.goodness">
+<em class="property">property </em><code class="sig-name descname">goodness</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeM.goodness" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 8</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeM.measurement_basis">
+<em class="property">property </em><code class="sig-name descname">measurement_basis</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeM.measurement_basis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeM.measurement_outcome">
+<em class="property">property </em><code class="sig-name descname">measurement_outcome</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeM.measurement_outcome" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeM.purpose_id">
+<em class="property">property </em><code class="sig-name descname">purpose_id</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeM.purpose_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 6</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeM.remote_node_id">
+<em class="property">property </em><code class="sig-name descname">remote_node_id</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeM.remote_node_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 7</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeM.sequence_number">
+<em class="property">property </em><code class="sig-name descname">sequence_number</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeM.sequence_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 5</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeM.type">
+<em class="property">property </em><code class="sig-name descname">type</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeM.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qlink_interface.interface.LinkLayerOKTypeR">
+<em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">LinkLayerOKTypeR</code><span class="sig-paren">(</span><em class="sig-param">type</em>, <em class="sig-param">create_id</em>, <em class="sig-param">measurement_outcome</em>, <em class="sig-param">directionality_flag</em>, <em class="sig-param">sequence_number</em>, <em class="sig-param">purpose_id</em>, <em class="sig-param">remote_node_id</em>, <em class="sig-param">goodness</em><span class="sig-paren">)</span><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeR" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeR.create_id">
+<em class="property">property </em><code class="sig-name descname">create_id</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeR.create_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeR.directionality_flag">
+<em class="property">property </em><code class="sig-name descname">directionality_flag</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeR.directionality_flag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeR.goodness">
+<em class="property">property </em><code class="sig-name descname">goodness</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeR.goodness" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 7</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeR.measurement_outcome">
+<em class="property">property </em><code class="sig-name descname">measurement_outcome</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeR.measurement_outcome" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeR.purpose_id">
+<em class="property">property </em><code class="sig-name descname">purpose_id</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeR.purpose_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 5</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeR.remote_node_id">
+<em class="property">property </em><code class="sig-name descname">remote_node_id</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeR.remote_node_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 6</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeR.sequence_number">
+<em class="property">property </em><code class="sig-name descname">sequence_number</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeR.sequence_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 4</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeR.type">
+<em class="property">property </em><code class="sig-name descname">type</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeR.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="qlink_interface.interface.LinkLayerErr">
+<em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">LinkLayerErr</code><span class="sig-paren">(</span><em class="sig-param">type</em>, <em class="sig-param">create_id</em>, <em class="sig-param">error_code</em>, <em class="sig-param">use_sequence_number_range</em>, <em class="sig-param">sequence_number_low</em>, <em class="sig-param">sequence_number_high</em>, <em class="sig-param">origin_node_id</em><span class="sig-paren">)</span><a class="headerlink" href="#qlink_interface.interface.LinkLayerErr" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="qlink_interface.interface.LinkLayerErr.create_id">
+<em class="property">property </em><code class="sig-name descname">create_id</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerErr.create_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerErr.error_code">
+<em class="property">property </em><code class="sig-name descname">error_code</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerErr.error_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerErr.origin_node_id">
+<em class="property">property </em><code class="sig-name descname">origin_node_id</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerErr.origin_node_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 6</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerErr.sequence_number_high">
+<em class="property">property </em><code class="sig-name descname">sequence_number_high</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerErr.sequence_number_high" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 5</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerErr.sequence_number_low">
+<em class="property">property </em><code class="sig-name descname">sequence_number_low</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerErr.sequence_number_low" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 4</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerErr.type">
+<em class="property">property </em><code class="sig-name descname">type</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerErr.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="qlink_interface.interface.LinkLayerErr.use_sequence_number_range">
+<em class="property">property </em><code class="sig-name descname">use_sequence_number_range</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerErr.use_sequence_number_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../api.html" class="btn btn-neutral float-left" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Axel Dahlberg
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
