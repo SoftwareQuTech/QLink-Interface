@@ -6,7 +6,6 @@ To use qlink-interface do for example
 
 .. code-block:: python
 
-   from qlink_interface.dummy_module import DummyClass
-   dc = DummyClass(4)
-   dc.add_to_x(3)
-   print(dc.get_x())  # prints 7
+   from qlink_interface import LinkLayerCreate
+   create_request = LinkLayerCreate(remote_node_id=0, number=2)
+   print(create_request)
