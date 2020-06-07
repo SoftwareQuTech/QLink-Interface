@@ -7,6 +7,7 @@ from .interface import (
     ErrorCode,
     RandomBasis,
     Basis,
+    BellState,
     LinkLayerCreate,
     LinkLayerRecv,
     LinkLayerStopRecv,
