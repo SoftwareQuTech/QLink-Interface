@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>interface &mdash; qlink-interface 0.0.2 documentation</title>
+  <title>interface &mdash; qlink-interface 0.1.0 documentation</title>
   
 
   
@@ -353,6 +353,32 @@ For details about this interface and specific header fields see the paper:</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="qlink_interface.interface.BellState">
+<em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">BellState</code><a class="reference internal" href="../_modules/qlink_interface/interface.html#BellState"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#qlink_interface.interface.BellState" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="attribute">
+<dt id="qlink_interface.interface.BellState.PHI_PLUS">
+<code class="sig-name descname">PHI_PLUS</code><em class="property"> = 0</em><a class="headerlink" href="#qlink_interface.interface.BellState.PHI_PLUS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.BellState.PHI_MINUS">
+<code class="sig-name descname">PHI_MINUS</code><em class="property"> = 1</em><a class="headerlink" href="#qlink_interface.interface.BellState.PHI_MINUS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.BellState.PSI_PLUS">
+<code class="sig-name descname">PSI_PLUS</code><em class="property"> = 2</em><a class="headerlink" href="#qlink_interface.interface.BellState.PSI_PLUS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="qlink_interface.interface.BellState.PSI_MINUS">
+<code class="sig-name descname">PSI_MINUS</code><em class="property"> = 3</em><a class="headerlink" href="#qlink_interface.interface.BellState.PSI_MINUS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="qlink_interface.interface.LinkLayerCreate">
 <em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">LinkLayerCreate</code><span class="sig-paren">(</span><em class="sig-param">remote_node_id</em>, <em class="sig-param">purpose_id</em>, <em class="sig-param">type</em>, <em class="sig-param">number</em>, <em class="sig-param">random_basis_local</em>, <em class="sig-param">random_basis_remote</em>, <em class="sig-param">minimum_fidelity</em>, <em class="sig-param">time_unit</em>, <em class="sig-param">max_time</em>, <em class="sig-param">priority</em>, <em class="sig-param">atomic</em>, <em class="sig-param">consecutive</em>, <em class="sig-param">probability_dist_local1</em>, <em class="sig-param">probability_dist_local2</em>, <em class="sig-param">probability_dist_remote1</em>, <em class="sig-param">probability_dist_remote2</em>, <em class="sig-param">rotation_X_local1</em>, <em class="sig-param">rotation_Y_local</em>, <em class="sig-param">rotation_X_local2</em>, <em class="sig-param">rotation_X_remote1</em>, <em class="sig-param">rotation_Y_remote</em>, <em class="sig-param">rotation_X_remote2</em><span class="sig-paren">)</span><a class="headerlink" href="#qlink_interface.interface.LinkLayerCreate" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
@@ -537,8 +563,14 @@ For details about this interface and specific header fields see the paper:</p>
 
 <dl class="class">
 <dt id="qlink_interface.interface.LinkLayerOKTypeK">
-<em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">LinkLayerOKTypeK</code><span class="sig-paren">(</span><em class="sig-param">type</em>, <em class="sig-param">create_id</em>, <em class="sig-param">logical_qubit_id</em>, <em class="sig-param">directionality_flag</em>, <em class="sig-param">sequence_number</em>, <em class="sig-param">purpose_id</em>, <em class="sig-param">remote_node_id</em>, <em class="sig-param">goodness</em>, <em class="sig-param">goodness_time</em><span class="sig-paren">)</span><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeK" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">LinkLayerOKTypeK</code><span class="sig-paren">(</span><em class="sig-param">type</em>, <em class="sig-param">create_id</em>, <em class="sig-param">logical_qubit_id</em>, <em class="sig-param">directionality_flag</em>, <em class="sig-param">sequence_number</em>, <em class="sig-param">purpose_id</em>, <em class="sig-param">remote_node_id</em>, <em class="sig-param">goodness</em>, <em class="sig-param">goodness_time</em>, <em class="sig-param">bell_state</em><span class="sig-paren">)</span><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeK" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeK.bell_state">
+<em class="property">property </em><code class="sig-name descname">bell_state</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeK.bell_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 9</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="qlink_interface.interface.LinkLayerOKTypeK.create_id">
 <em class="property">property </em><code class="sig-name descname">create_id</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeK.create_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for field number 1</p>
@@ -596,8 +628,14 @@ For details about this interface and specific header fields see the paper:</p>
 
 <dl class="class">
 <dt id="qlink_interface.interface.LinkLayerOKTypeM">
-<em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">LinkLayerOKTypeM</code><span class="sig-paren">(</span><em class="sig-param">type</em>, <em class="sig-param">create_id</em>, <em class="sig-param">measurement_outcome</em>, <em class="sig-param">measurement_basis</em>, <em class="sig-param">directionality_flag</em>, <em class="sig-param">sequence_number</em>, <em class="sig-param">purpose_id</em>, <em class="sig-param">remote_node_id</em>, <em class="sig-param">goodness</em><span class="sig-paren">)</span><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeM" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">LinkLayerOKTypeM</code><span class="sig-paren">(</span><em class="sig-param">type</em>, <em class="sig-param">create_id</em>, <em class="sig-param">measurement_outcome</em>, <em class="sig-param">measurement_basis</em>, <em class="sig-param">directionality_flag</em>, <em class="sig-param">sequence_number</em>, <em class="sig-param">purpose_id</em>, <em class="sig-param">remote_node_id</em>, <em class="sig-param">goodness</em>, <em class="sig-param">bell_state</em><span class="sig-paren">)</span><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeM" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeM.bell_state">
+<em class="property">property </em><code class="sig-name descname">bell_state</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeM.bell_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 9</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="qlink_interface.interface.LinkLayerOKTypeM.create_id">
 <em class="property">property </em><code class="sig-name descname">create_id</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeM.create_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for field number 1</p>
@@ -655,8 +693,14 @@ For details about this interface and specific header fields see the paper:</p>
 
 <dl class="class">
 <dt id="qlink_interface.interface.LinkLayerOKTypeR">
-<em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">LinkLayerOKTypeR</code><span class="sig-paren">(</span><em class="sig-param">type</em>, <em class="sig-param">create_id</em>, <em class="sig-param">measurement_outcome</em>, <em class="sig-param">directionality_flag</em>, <em class="sig-param">sequence_number</em>, <em class="sig-param">purpose_id</em>, <em class="sig-param">remote_node_id</em>, <em class="sig-param">goodness</em><span class="sig-paren">)</span><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeR" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">qlink_interface.interface.</code><code class="sig-name descname">LinkLayerOKTypeR</code><span class="sig-paren">(</span><em class="sig-param">type</em>, <em class="sig-param">create_id</em>, <em class="sig-param">measurement_outcome</em>, <em class="sig-param">directionality_flag</em>, <em class="sig-param">sequence_number</em>, <em class="sig-param">purpose_id</em>, <em class="sig-param">remote_node_id</em>, <em class="sig-param">goodness</em>, <em class="sig-param">bell_state</em><span class="sig-paren">)</span><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeR" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
+<dt id="qlink_interface.interface.LinkLayerOKTypeR.bell_state">
+<em class="property">property </em><code class="sig-name descname">bell_state</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeR.bell_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 8</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="qlink_interface.interface.LinkLayerOKTypeR.create_id">
 <em class="property">property </em><code class="sig-name descname">create_id</code><a class="headerlink" href="#qlink_interface.interface.LinkLayerOKTypeR.create_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alias for field number 1</p>

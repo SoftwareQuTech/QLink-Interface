@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>qlink_interface.interface &mdash; qlink-interface 0.0.2 documentation</title>
+  <title>qlink_interface.interface &mdash; qlink-interface 0.1.0 documentation</title>
   
 
   
@@ -216,6 +216,14 @@
     <span class="n">ZMINUSX</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span></div>
 
 
+<span class="c1"># What Bell state is generated</span>
+<div class="viewcode-block" id="BellState"><a class="viewcode-back" href="../../modules/interface.html#qlink_interface.interface.BellState">[docs]</a><span class="k">class</span> <span class="nc">BellState</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">PHI_PLUS</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># |00&gt; + |11&gt;</span>
+    <span class="n">PHI_MINUS</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>  <span class="c1"># |00&gt; - |11&gt;</span>
+    <span class="n">PSI_PLUS</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>  <span class="c1"># |01&gt; + |10&gt;</span>
+    <span class="n">PSI_MINUS</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>  <span class="c1"># |01&gt; - |10&gt;</span></div>
+
+
 <span class="c1"># CREATE message to the link layer for entanglement generation</span>
 <span class="n">LinkLayerCreate</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;LinkLayerCreate&quot;</span><span class="p">,</span> <span class="p">[</span>
     <span class="s2">&quot;remote_node_id&quot;</span><span class="p">,</span>
@@ -273,6 +281,7 @@
     <span class="s2">&quot;remote_node_id&quot;</span><span class="p">,</span>
     <span class="s2">&quot;goodness&quot;</span><span class="p">,</span>
     <span class="s2">&quot;goodness_time&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;bell_state&quot;</span><span class="p">,</span>
 <span class="p">])</span>
 <span class="n">LinkLayerOKTypeK</span><span class="o">.</span><span class="fm">__new__</span><span class="o">.</span><span class="vm">__defaults__</span> <span class="o">=</span> <span class="p">(</span><span class="n">ReturnType</span><span class="o">.</span><span class="n">OK_K</span><span class="p">,)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">0</span><span class="p">,)</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">LinkLayerOKTypeK</span><span class="o">.</span><span class="n">_fields</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 
@@ -287,6 +296,7 @@
     <span class="s2">&quot;purpose_id&quot;</span><span class="p">,</span>
     <span class="s2">&quot;remote_node_id&quot;</span><span class="p">,</span>
     <span class="s2">&quot;goodness&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;bell_state&quot;</span><span class="p">,</span>
 <span class="p">])</span>
 <span class="n">LinkLayerOKTypeM</span><span class="o">.</span><span class="fm">__new__</span><span class="o">.</span><span class="vm">__defaults__</span> <span class="o">=</span> <span class="p">(</span><span class="n">ReturnType</span><span class="o">.</span><span class="n">OK_M</span><span class="p">,)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">0</span><span class="p">,)</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">LinkLayerOKTypeM</span><span class="o">.</span><span class="n">_fields</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 
@@ -301,6 +311,7 @@
     <span class="s2">&quot;purpose_id&quot;</span><span class="p">,</span>
     <span class="s2">&quot;remote_node_id&quot;</span><span class="p">,</span>
     <span class="s2">&quot;goodness&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;bell_state&quot;</span><span class="p">,</span>
 <span class="p">])</span>
 <span class="n">LinkLayerOKTypeR</span><span class="o">.</span><span class="fm">__new__</span><span class="o">.</span><span class="vm">__defaults__</span> <span class="o">=</span> <span class="p">(</span><span class="n">ReturnType</span><span class="o">.</span><span class="n">OK_R</span><span class="p">,)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">0</span><span class="p">,)</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">LinkLayerOKTypeR</span><span class="o">.</span><span class="n">_fields</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 
