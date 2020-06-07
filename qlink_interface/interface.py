@@ -68,6 +68,14 @@ class Basis(Enum):
     ZMINUSX = auto()
 
 
+# What Bell state is generated
+class BellState(Enum):
+    PHI_PLUS = 0  # |00> + |11>
+    PHI_MINUS = auto()  # |00> - |11>
+    PSI_PLUS = auto()  # |01> + |10>
+    PSI_MINUS = auto()  # |01> - |10>
+
+
 # CREATE message to the link layer for entanglement generation
 LinkLayerCreate = namedtuple("LinkLayerCreate", [
     "remote_node_id",
@@ -125,6 +133,7 @@ LinkLayerOKTypeK = namedtuple("LinkLayerOKTypeK", [
     "remote_node_id",
     "goodness",
     "goodness_time",
+    "bell_state",
 ])
 LinkLayerOKTypeK.__new__.__defaults__ = (ReturnType.OK_K,) + (0,) * (len(LinkLayerOKTypeK._fields) - 1)
 
@@ -139,6 +148,7 @@ LinkLayerOKTypeM = namedtuple("LinkLayerOKTypeM", [
     "purpose_id",
     "remote_node_id",
     "goodness",
+    "bell_state",
 ])
 LinkLayerOKTypeM.__new__.__defaults__ = (ReturnType.OK_M,) + (0,) * (len(LinkLayerOKTypeM._fields) - 1)
 
@@ -153,6 +163,7 @@ LinkLayerOKTypeR = namedtuple("LinkLayerOKTypeR", [
     "purpose_id",
     "remote_node_id",
     "goodness",
+    "bell_state",
 ])
 LinkLayerOKTypeR.__new__.__defaults__ = (ReturnType.OK_R,) + (0,) * (len(LinkLayerOKTypeR._fields) - 1)
 

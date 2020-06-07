@@ -1,4 +1,4 @@
-__version__ = "0.0.2"
+__version__ = "0.1.0"
 
 from .interface import (
     EPRType,
@@ -7,6 +7,7 @@ from .interface import (
     ErrorCode,
     RandomBasis,
     Basis,
+    BellState,
     LinkLayerCreate,
     LinkLayerRecv,
     LinkLayerStopRecv,
