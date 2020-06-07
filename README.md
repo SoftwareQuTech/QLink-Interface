@@ -1,4 +1,4 @@
-QLink-Interface (0.0.2)
+QLink-Interface (0.1.0)
 =====================================================
 
 Welcome to QLink-Interface's README.
