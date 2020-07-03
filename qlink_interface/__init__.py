@@ -1,19 +1,19 @@
-__version__ = "0.1.0"
+__version__ = "1.0.0"
 
 from .interface import (
-    EPRType,
-    RequestType,
-    ReturnType,
+    ReqCreateBase,
+    ReqCreateAndKeep,
+    ReqMeasureDirectly,
+    ReqRemoteStatePrep,
+    ReqReceive,
+    ReqStopReceive,
+    ResCreateAndKeep,
+    ResMeasureDirectly,
+    ResRemoteStatePrep,
+    ResError,
     ErrorCode,
+    MeasurementBasis,
     RandomBasis,
-    Basis,
     BellState,
-    LinkLayerCreate,
-    LinkLayerRecv,
-    LinkLayerStopRecv,
-    LinkLayerOKTypeK,
-    LinkLayerOKTypeM,
-    LinkLayerOKTypeR,
-    LinkLayerErr,
     get_creator_node_id,
 )
