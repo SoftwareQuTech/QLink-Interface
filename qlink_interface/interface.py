@@ -36,58 +36,6 @@ class ReqCreateBase:
     consecutive: bool = False  # should entangled pairs be created close in time?
 
 
-@dataclass
-class ReqCreateAndMeasureBase(ReqCreateBase):
-    """Base for "create and measure" requests. Not a supported request type itself.
-
-    Measurement bases can be manipulated by performing a general rotation on a qubit before measurement.
-    Any rotation can be decomposes into first an X rotation, then an Y rotation, and then another X rotation.
-    By specifying the three corresponding angles (these are Euler angles), the pre-measurement rotation is specified.
-
-    Note
-    ----
-    Based on figure 1 of https://tools.ietf.org/pdf/draft-dahlberg-ll-quantum-03.pdf (updated link-layer protocol).
-
-    """
-
-    x_rotation_angle_local_1: float = 0  # local qubit initial X rotation
-    y_rotation_angle_local: float = 0  # local qubit Y rotation
-    x_rotation_angle_local_2: float = 0  # local qubit final X rotation
-    x_rotation_angle_remote_1: float = 0  # remote qubit initial X rotation
-    y_rotation_angle_remote: float = 0  # remote qubit Y rotation
-    x_rotation_angle_remote_2: float = 0  # remote qubit final X rotation
-
-
-@dataclass
-class ReqCreateAndMeasureTwoBasesBase(ReqCreateAndMeasureBase):
-    """Base for "create and measure" requests with two random base choices. Not a supported request type itself.
-
-    Note
-    ----
-    Based on figure 1 of https://tools.ietf.org/pdf/draft-dahlberg-ll-quantum-03.pdf (updated link-layer protocol).
-
-    """
-
-    probability_distribution_parameter_local_1: float = .5  # probability of measuring local qubit in first basis
-    probability_distribution_parameter_remote_1: float = .5  # probability of measuring remote qubit in first basis
-
-
-@dataclass
-class ReqCreateAndMeasureThreeBasesBase(ReqCreateAndMeasureBase):
-    """Base for "create and measure" requests with three random base choices. Not a supported request type itself.
-
-    Note
-    ----
-    Based on figure 1 of https://tools.ietf.org/pdf/draft-dahlberg-ll-quantum-03.pdf (updated link-layer protocol).
-
-    """
-
-    probability_distribution_parameter_local_1: float = 1 / 3  # probability of measuring local qubit in first basis
-    probability_distribution_parameter_remote_1: float = 1 / 3  # probability of measuring remote qubit in first basis
-    probability_distribution_parameter_local_2: float = 1 / 3  # probability of measuring local qubit in second basis
-    probability_distribution_parameter_remote_2: float = 1 / 3  # probability of measuring remote qubit in 2nd basis
-
-
 class ReqCreateAndKeep(ReqCreateBase):
     """Request to generate entanglement and store it in memory.
 
@@ -100,14 +48,29 @@ class ReqCreateAndKeep(ReqCreateBase):
     pass
 
 
-@dataclass
-class ReqCreateAndMeasureFixed(ReqCreateAndMeasureBase):
-    """Request to generate entanglement and measure it immediately in a specified basis.
+# Choice of random bases sets
+class RandomBasis(Enum):
+    NONE = 0
+    XZ = auto()
+    XYZ = auto()
+    CHSH = auto()
 
-    Measurement in an arbitrary basis is performed by first rotating the qubit and then performing a Z measurement.
+
+# What Bell state is generated
+class BellState(Enum):
+    PHI_PLUS = 0  # |00> + |11>
+    PHI_MINUS = auto()  # |00> - |11>
+    PSI_PLUS = auto()  # |01> + |10>
+    PSI_MINUS = auto()  # |01> - |10>
+
+
+@dataclass
+class ReqMeasureDirectly(ReqCreateBase):
+    """Request to measure directly.
+
+    Measurement bases can be manipulated by performing a general rotation on a qubit before measurement.
     Any rotation can be decomposes into first an X rotation, then an Y rotation, and then another X rotation.
-    By specifying the three corresponding angles (these are Euler angles), measurement in an arbitrary fixed basis
-    can be performed.
+    By specifying the three corresponding angles (these are Euler angles), the pre-measurement rotation is specified.
 
     Note
     ----
@@ -115,12 +78,27 @@ class ReqCreateAndMeasureFixed(ReqCreateAndMeasureBase):
 
     """
 
-    pass
+    random_basis_local: RandomBasis = RandomBasis.NONE  # What random basis set to sample from (local)
+    random_basis_remote: RandomBasis = RandomBasis.NONE  # What random basis set to sample from (remote)
+    x_rotation_angle_local_1: float = 0  # local qubit initial X rotation
+    y_rotation_angle_local: float = 0  # local qubit Y rotation
+    x_rotation_angle_local_2: float = 0  # local qubit final X rotation
+    x_rotation_angle_remote_1: float = 0  # remote qubit initial X rotation
+    y_rotation_angle_remote: float = 0  # remote qubit Y rotation
+    x_rotation_angle_remote_2: float = 0  # remote qubit final X rotation
+    probability_distribution_parameter_local_1: float = 0  # probability of measuring local qubit in first basis
+    probability_distribution_parameter_remote_1: float = 0  # probability of measuring remote qubit in first basis
+    probability_distribution_parameter_local_2: float = 0  # probability of measuring local qubit in second basis
+    probability_distribution_parameter_remote_2: float = 0  # probability of measuring remote qubit in 2nd basis
 
 
 @dataclass
-class ReqCreateAndMeasureXZ(ReqCreateAndMeasureTwoBasesBase):
-    """Request to generate entanglement and measure it immediately, randomly in either X or Z (BB84).
+class ReqRemoteStatePrep(ReqCreateBase):
+    """Request for remote state preparation.
+
+    Measurement bases can be manipulated by performing a general rotation on a qubit before measurement.
+    Any rotation can be decomposes into first an X rotation, then an Y rotation, and then another X rotation.
+    By specifying the three corresponding angles (these are Euler angles), the pre-measurement rotation is specified.
 
     Note
     ----
@@ -128,35 +106,12 @@ class ReqCreateAndMeasureXZ(ReqCreateAndMeasureTwoBasesBase):
 
     """
 
-    pass
-
-
-@dataclass
-class ReqCreateAndMeasureXYZ(ReqCreateAndMeasureThreeBasesBase):
-    """Request to generate entanglement and measure it immediately, randomly in either X, Y or Z.
-
-    Note
-    ----
-    Based on figure 1 of https://tools.ietf.org/pdf/draft-dahlberg-ll-quantum-03.pdf (updated link-layer protocol).
-
-    """
-
-    pass
-
-
-# TODO: make more explicit what CHSH bases are
-@dataclass
-class ReqCreateAndMeasureCHSH(ReqCreateAndMeasureThreeBasesBase):
-    """Request to generate entanglement and measure it immediately, randomly in CHSH rotated bases.
-
-    Note
-    ----
-    Based on figure 1 of https://tools.ietf.org/pdf/draft-dahlberg-ll-quantum-03.pdf (updated link-layer protocol).
-    This document says about the CHSH rotated bases: Z basis rotated by angles +/- pi/4 around Y axis.
-
-    """
-
-    pass
+    random_basis_local: RandomBasis = RandomBasis.NONE  # What random basis set to sample from (local)
+    x_rotation_angle_local_1: float = 0  # local qubit initial X rotation
+    y_rotation_angle_local: float = 0  # local qubit Y rotation
+    x_rotation_angle_local_2: float = 0  # local qubit final X rotation
+    probability_distribution_parameter_local_1: float = 0  # probability of measuring local qubit in first basis
+    probability_distribution_parameter_local_2: float = 0  # probability of measuring local qubit in second basis
 
 
 @dataclass
@@ -216,7 +171,7 @@ class MeasurementBasis(Enum):
 
 
 @dataclass
-class ResCreateAndMeasure(ResCreate):
+class ResMeasureDirectly(ResCreate):
     """Response corresponding to create and measure request.
 
     Note

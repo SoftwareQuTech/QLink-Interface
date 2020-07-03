@@ -1,18 +1,19 @@
 __version__ = "1.0.0"
 
 from .interface import (
+    ReqCreateBase,
     ReqCreateAndKeep,
-    ReqCreateAndMeasureFixed,
-    ReqCreateAndMeasureXZ,
-    ReqCreateAndMeasureXYZ,
-    ReqCreateAndMeasureCHSH,
+    ReqMeasureDirectly,
+    ReqRemoteStatePrep,
     ReqReceive,
     ReqStopReceive,
     ResCreateAndKeep,
-    ResCreateAndMeasure,
+    ResMeasureDirectly,
     ResRemoteStatePrep,
     ResError,
     ErrorCode,
     MeasurementBasis,
+    RandomBasis,
+    BellState,
     get_creator_node_id,
 )
