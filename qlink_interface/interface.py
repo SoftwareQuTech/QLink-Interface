@@ -12,34 +12,240 @@ and the QIRG draft:
 """
 
 from enum import Enum, auto
-from collections import namedtuple
+from dataclasses import dataclass
 
 
-class EPRType(Enum):
-    K = 0
-    M = auto()
-    R = auto()
+@dataclass
+class ReqCreateBase:
+    """Base for "create" requests. Not a supported request type itself.
+
+    Note
+    ----
+    Based on figure 1 of https://tools.ietf.org/pdf/draft-dahlberg-ll-quantum-03.pdf (updated link-layer protocol).
+
+    """
+
+    remote_node_id: int = 0  # ID of the node to create entanglement with
+    minimum_fidelity: float = 0  # the desired minimum fidelity, between 0 and 1
+    time_unit: int = 0  # 0 for microseconds, 1 for milliseconds, 2 for seconds
+    max_time: int = 0  # the maximum number of "time_unit"s the higher layer is willing to wait for the request
+    purpose_id: int = 0  # allows higher layer to tag request for a specific purpose
+    number: int = 1  # number of entangled pairs to generate
+    priority: int = 0  # large value indicates this request is of high priority and should be fulfilled early
+    atomic: bool = False  # should entangled qubits be available in memory at the same time?
+    consecutive: bool = False  # should entangled pairs be created close in time?
 
 
-# Supported request types (create and keep, measure directly, and remote state preparation)
-class RequestType(Enum):
-    K = EPRType.K.value
-    M = EPRType.M.value
-    R = EPRType.R.value
-    RECV = auto()
-    STOP_RECV = auto()
+@dataclass
+class ReqCreateAndMeasureBase(ReqCreateBase):
+    """Base for "create and measure" requests. Not a supported request type itself.
+
+    Measurement bases can be manipulated by performing a general rotation on a qubit before measurement.
+    Any rotation can be decomposes into first an X rotation, then an Y rotation, and then another X rotation.
+    By specifying the three corresponding angles (these are Euler angles), the pre-measurement rotation is specified.
+
+    Note
+    ----
+    Based on figure 1 of https://tools.ietf.org/pdf/draft-dahlberg-ll-quantum-03.pdf (updated link-layer protocol).
+
+    """
+
+    x_rotation_angle_local_1: float = 0  # local qubit initial X rotation
+    y_rotation_angle_local: float = 0  # local qubit Y rotation
+    x_rotation_angle_local_2: float = 0  # local qubit final X rotation
+    x_rotation_angle_remote_1: float = 0  # remote qubit initial X rotation
+    y_rotation_angle_remote: float = 0  # remote qubit Y rotation
+    x_rotation_angle_remote_2: float = 0  # remote qubit final X rotation
 
 
-# Types of replies from the link layer protocol
-class ReturnType(Enum):
-    OK_K = EPRType.K.value
-    OK_M = EPRType.M.value
-    OK_R = EPRType.R.value
-    ERR = auto()
-    CREATE_ID = auto()
+@dataclass
+class ReqCreateAndMeasureTwoBasesBase(ReqCreateAndMeasureBase):
+    """Base for "create and measure" requests with two random base choices. Not a supported request type itself.
+
+    Note
+    ----
+    Based on figure 1 of https://tools.ietf.org/pdf/draft-dahlberg-ll-quantum-03.pdf (updated link-layer protocol).
+
+    """
+
+    probability_distribution_parameter_local_1: float = .5  # probability of measuring local qubit in first basis
+    probability_distribution_parameter_remote_1: float = .5  # probability of measuring remote qubit in first basis
 
 
-# Error messages
+@dataclass
+class ReqCreateAndMeasureThreeBasesBase(ReqCreateAndMeasureBase):
+    """Base for "create and measure" requests with three random base choices. Not a supported request type itself.
+
+    Note
+    ----
+    Based on figure 1 of https://tools.ietf.org/pdf/draft-dahlberg-ll-quantum-03.pdf (updated link-layer protocol).
+
+    """
+
+    probability_distribution_parameter_local_1: float = 1 / 3  # probability of measuring local qubit in first basis
+    probability_distribution_parameter_remote_1: float = 1 / 3  # probability of measuring remote qubit in first basis
+    probability_distribution_parameter_local_2: float = 1 / 3  # probability of measuring local qubit in second basis
+    probability_distribution_parameter_remote_2: float = 1 / 3  # probability of measuring remote qubit in 2nd basis
+
+
+class ReqCreateAndKeep(ReqCreateBase):
+    """Request to generate entanglement and store it in memory.
+
+    Note
+    ----
+    Based on figure 1 of https://tools.ietf.org/pdf/draft-dahlberg-ll-quantum-03.pdf (updated link-layer protocol).
+
+    """
+
+    pass
+
+
+@dataclass
+class ReqCreateAndMeasureFixed(ReqCreateAndMeasureBase):
+    """Request to generate entanglement and measure it immediately in a specified basis.
+
+    Measurement in an arbitrary basis is performed by first rotating the qubit and then performing a Z measurement.
+    Any rotation can be decomposes into first an X rotation, then an Y rotation, and then another X rotation.
+    By specifying the three corresponding angles (these are Euler angles), measurement in an arbitrary fixed basis
+    can be performed.
+
+    Note
+    ----
+    Based on figure 1 of https://tools.ietf.org/pdf/draft-dahlberg-ll-quantum-03.pdf (updated link-layer protocol).
+
+    """
+
+    pass
+
+
+@dataclass
+class ReqCreateAndMeasureXZ(ReqCreateAndMeasureTwoBasesBase):
+    """Request to generate entanglement and measure it immediately, randomly in either X or Z (BB84).
+
+    Note
+    ----
+    Based on figure 1 of https://tools.ietf.org/pdf/draft-dahlberg-ll-quantum-03.pdf (updated link-layer protocol).
+
+    """
+
+    pass
+
+
+@dataclass
+class ReqCreateAndMeasureXYZ(ReqCreateAndMeasureThreeBasesBase):
+    """Request to generate entanglement and measure it immediately, randomly in either X, Y or Z.
+
+    Note
+    ----
+    Based on figure 1 of https://tools.ietf.org/pdf/draft-dahlberg-ll-quantum-03.pdf (updated link-layer protocol).
+
+    """
+
+    pass
+
+
+# TODO: make more explicit what CHSH bases are
+@dataclass
+class ReqCreateAndMeasureCHSH(ReqCreateAndMeasureThreeBasesBase):
+    """Request to generate entanglement and measure it immediately, randomly in CHSH rotated bases.
+
+    Note
+    ----
+    Based on figure 1 of https://tools.ietf.org/pdf/draft-dahlberg-ll-quantum-03.pdf (updated link-layer protocol).
+    This document says about the CHSH rotated bases: Z basis rotated by angles +/- pi/4 around Y axis.
+
+    """
+
+    pass
+
+
+@dataclass
+class ReqReceive:
+    """Request to be ready for entanglement generation."""
+    remote_node_id: int = 0
+    purpose_id: int = 0
+
+
+@dataclass
+class ReqStopReceive:
+    """Request to stop being ready for entanglement generation."""
+    remote_node_id: int = 0
+    purpose_id: int = 0
+
+
+@dataclass
+class ResCreate:
+    """Base for different "create" responses. Not a response that is used itself.
+
+    Note
+    ----
+    Based on Figures 3, 4 of https://tools.ietf.org/pdf/draft-dahlberg-ll-quantum-03.pdf (updated link-layer protocol)
+
+    """
+
+    create_id: int = 0  # the same as the Create ID returned to the requester
+    directionality_flag: bool = 0  # Specifies if the request came from this node (D=0) or the remote node (D=1)
+    sequence_number: int = 0  # a sequence number for identifiying the entangled pair
+    purpose_id: int = 0  # purpose ID of the request
+    remote_node_id: int = 0  # used if connected to multiple nodes
+    goodness: float = 0  # an estimate of the fidelity of the generated pair
+    bell_state: int = 0  # index of the created Bell state # TODO add mapping
+
+
+@dataclass
+class ResCreateAndKeep(ResCreate):
+    """Response corresponding to create and keep request.
+
+    Note
+    ----
+    Based on Figure 3 of https://tools.ietf.org/pdf/draft-dahlberg-ll-quantum-03.pdf (updated link-layer protocol).
+
+    """
+
+    logical_qubit_id: int = 0  # logical qubit id where the entanglement is stored
+    time_of_goodness: int = 0  # time of the goodness estimate
+    # TODO: what are the time units for time of goodness? As specified in request?
+
+
+class MeasurementBasis(Enum):
+    Z = 0
+    X = auto()
+    Y = auto()
+    ZPLUSX = auto()
+    ZMINUSX = auto()
+
+
+@dataclass
+class ResCreateAndMeasure(ResCreate):
+    """Response corresponding to create and measure request.
+
+    Note
+    ----
+    Based on Figure 4 of https://tools.ietf.org/pdf/draft-dahlberg-ll-quantum-03.pdf (updated link-layer protocol).
+
+    """
+
+    measurement_outcome: bool = 0  # outcome of the measurement performed on the entangled pair
+    measurement_basis: MeasurementBasis = MeasurementBasis.Z  # which basis the entangled pair was measured in
+    # NOTE: this does not take rotations on the qubit before measurement into account.
+
+
+@dataclass
+class ResRemoteStatePrep(ResCreate):
+    """Response corresponding to create and measure request.
+
+    Note
+    ----
+    Based on Figure 4 of https://tools.ietf.org/pdf/draft-dahlberg-ll-quantum-03.pdf (updated link-layer protocol).
+
+    """
+
+    measurement_outcome: bool = 0  # outcome of the measurement performed on the entangled pair
+    measurement_basis: MeasurementBasis = MeasurementBasis.Z  # which basis the entangled pair was measured in
+    # NOTE: this does not take rotations on the qubit before measurement into account.
+    # NOTE: measurement outcome field is only valid on creator side
+
+
 class ErrorCode(Enum):
     UNSUPP = 0
     NOTIME = auto()
@@ -51,138 +257,27 @@ class ErrorCode(Enum):
     CREATE = auto()
 
 
-# Choice of random bases sets
-class RandomBasis(Enum):
-    NONE = 0
-    XZ = auto()
-    XYZ = auto()
-    CHSH = auto()
+@dataclass
+class ResError:
+    """Response when an error occurs.
+
+    Note
+    ----
+    Based on Figure 5 of https://tools.ietf.org/pdf/draft-dahlberg-ll-quantum-03.pdf (updated link-layer protocol).
+
+    """
+
+    create_id: int = 0  # the same as the Create ID returned to the requester
+    error_code: ErrorCode = ErrorCode.UNSUPP  # the error that occured in the EGP
+    use_sequence_number_range: bool = 0  # specifies whether a range of sequence numbers should be expired
+    sequence_number_low: int = 0  # lower bound of range of sequence numbers to expire
+    sequence_number_high: int = 0  # upper bound of range of sequence numbers to expire
+    origin_node_id: int = 1  # used if the node is directly connected to multiple nodes
 
 
-# Bases return from link layer about which basis was randomly chosen
-class Basis(Enum):
-    Z = 0
-    X = auto()
-    Y = auto()
-    ZPLUSX = auto()
-    ZMINUSX = auto()
-
-
-# What Bell state is generated
-class BellState(Enum):
-    PHI_PLUS = 0  # |00> + |11>
-    PHI_MINUS = auto()  # |00> - |11>
-    PSI_PLUS = auto()  # |01> + |10>
-    PSI_MINUS = auto()  # |01> - |10>
-
-
-# CREATE message to the link layer for entanglement generation
-LinkLayerCreate = namedtuple("LinkLayerCreate", [
-    "remote_node_id",
-    "purpose_id",
-    "type",
-    "number",
-    "random_basis_local",
-    "random_basis_remote",
-    "minimum_fidelity",
-    "time_unit",
-    "max_time",
-    "priority",
-    "atomic",
-    "consecutive",
-    "probability_dist_local1",
-    "probability_dist_local2",
-    "probability_dist_remote1",
-    "probability_dist_remote2",
-    "rotation_X_local1",
-    "rotation_Y_local",
-    "rotation_X_local2",
-    "rotation_X_remote1",
-    "rotation_Y_remote",
-    "rotation_X_remote2",
-])
-LinkLayerCreate.__new__.__defaults__ = (
-    (0, 0, RequestType.K, 1, RandomBasis.NONE, RandomBasis.NONE) +
-    (0,) * (len(LinkLayerCreate._fields) - 6)
-)
-
-# RECV message to the link layer to allow for entanglement generation with a remote node
-LinkLayerRecv = namedtuple("LinkLayerRecv", [
-    "type",
-    "remote_node_id",
-    "purpose_id",
-])
-LinkLayerRecv.__new__.__defaults__ = (RequestType.RECV,) + (0,) * (len(LinkLayerRecv._fields) - 1)
-
-# RECV message to the link layer to stop allowing for entanglement generation with a remote node
-LinkLayerStopRecv = namedtuple("LinkLayerStopRecv", [
-    "type",
-    "remote_node_id",
-    "purpose_id",
-])
-LinkLayerStopRecv.__new__.__defaults__ = (RequestType.STOP_RECV,) + (0,) * (len(LinkLayerStopRecv._fields) - 1)
-
-# OK message from the link layer of successful generation of entanglement that is kept in memory
-LinkLayerOKTypeK = namedtuple("LinkLayerOKTypeK", [
-    "type",
-    "create_id",
-    "logical_qubit_id",
-    "directionality_flag",
-    "sequence_number",
-    "purpose_id",
-    "remote_node_id",
-    "goodness",
-    "goodness_time",
-    "bell_state",
-])
-LinkLayerOKTypeK.__new__.__defaults__ = (ReturnType.OK_K,) + (0,) * (len(LinkLayerOKTypeK._fields) - 1)
-
-# OK message from the link layer of successful generation of entanglement that is measured directly
-LinkLayerOKTypeM = namedtuple("LinkLayerOKTypeM", [
-    "type",
-    "create_id",
-    "measurement_outcome",
-    "measurement_basis",
-    "directionality_flag",
-    "sequence_number",
-    "purpose_id",
-    "remote_node_id",
-    "goodness",
-    "bell_state",
-])
-LinkLayerOKTypeM.__new__.__defaults__ = (ReturnType.OK_M,) + (0,) * (len(LinkLayerOKTypeM._fields) - 1)
-
-# OK message from the link layer of successful generation of entanglement that was used for remote state preparation
-# (to creator node)
-LinkLayerOKTypeR = namedtuple("LinkLayerOKTypeR", [
-    "type",
-    "create_id",
-    "measurement_outcome",
-    "directionality_flag",
-    "sequence_number",
-    "purpose_id",
-    "remote_node_id",
-    "goodness",
-    "bell_state",
-])
-LinkLayerOKTypeR.__new__.__defaults__ = (ReturnType.OK_R,) + (0,) * (len(LinkLayerOKTypeR._fields) - 1)
-
-# Error message from the link layer
-LinkLayerErr = namedtuple("LinkLayerErr", [
-    "type",
-    "create_id",
-    "error_code",
-    "use_sequence_number_range",
-    "sequence_number_low",
-    "sequence_number_high",
-    "origin_node_id",
-])
-LinkLayerErr.__new__.__defaults__ = (ReturnType.ERR,) + (0,) * (len(LinkLayerErr._fields) - 1)
-
-
-def get_creator_node_id(local_node_id, create_request):
+def get_creator_node_id(local_node_id, response):
     """Returns the node ID of the node that submitted the given create request"""
-    if create_request.directionality_flag == 1:
-        return create_request.remote_node_id
+    if response.directionality_flag == 1:
+        return response.remote_node_id
     else:
         return local_node_id
